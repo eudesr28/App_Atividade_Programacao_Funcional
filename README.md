@@ -34,7 +34,30 @@ O aplicativo é voltado para organizações que necessitam de controle de agenda
 
 # 2. Estrutura de pastas do projeto
 
-![Estrutura de pastas do projeto](./estrutura-de-pastas.jpg)
+APP  
+└── App_Atividade_Programacao_Funcional  
+    ├── data  
+    │   └── agenda.db  
+    ├── database  
+    │   ├── __pycache__  
+    │   ├── __init__.py  
+    │   ├── create_admin.py  
+    │   └── data.py  
+    ├── utils  
+    │   ├── __pycache__  
+    │   ├── __init__.py  
+    │   ├── helpers.py  
+    │   └── security.py  
+    ├── views  
+    │   ├── __pycache__  
+    │   ├── __init__.py  
+    │   ├── admin.py  
+    │   ├── create_appt.py  
+    │   ├── edit_appt.py  
+    │   ├── edit_user.py  
+    │   ├── register.py  
+    │   └── main.py  
+    └── README.md
 
 --- 
 
