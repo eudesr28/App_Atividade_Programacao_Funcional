@@ -1,6 +1,7 @@
 import hmac
 import hashlib, os, re
 
+# -------- Closure para validação de senha ----------
 def make_password_validator(min_len=8):
     regex_letter = re.compile(r"[A-Za-z]")
     regex_digit = re.compile(r"\d")
@@ -18,7 +19,7 @@ def make_password_validator(min_len=8):
         return True, ""
     return validate
 
-validate_password = make_password_validator(8)
+validate_password = make_password_validator(8) # closure
 
 
 def hash_password(password: str, salt: bytes = None):
