@@ -25,6 +25,8 @@ O sistema desenvolvido é um aplicativo desktop em Python utilizando Tkinter par
    - [List comprehension](#2-list-comprehension)  
    - [Closure](#3-closure)  
    - [Função de alta ordem](#4-função-de-alta-ordem)
+7. [Casos de Testes](#7-casos-de-testes)
+8. [Responsabilidades por Colaborador](#8-responsabilidades-por-colaborador)
 
 # 1. Descrição Geral do Sistema
 O sistema desenvolvido é um aplicativo desktop em Python utilizando Tkinter para interface gráfica e SQLite para persistência de dados. Ele possibilita o cadastro de usuários, realização de login seguro, agendamento de serviços, além de permitir que o administrador gerencie usuários e agendamentos.
@@ -411,4 +413,106 @@ def with_db(func):
 - with_db recebe uma função (func) como parâmetro → alta ordem.
 
 2. O exemplo de closure que foi citado anteriormente (make_password_checker) também é alta ordem, porque retorna uma função (check).
+
+---
+
+## 7. Casos de Teste
+
+### CT01 – Cadastro de Usuário com dados válidos
+
+- **Objetivo**: Verificar se o sistema cadastra um novo usuário corretamente.
+- **Entradas**: Nome, Email, Telefone, Data de Nascimento (DD/MM/YYYY), Senha válida.
+- **Resultado Esperado**: Mensagem de sucesso e redirecionamento para tela de login.
+
+### CT02 – Cadastro de Usuário com senha inválida
+
+- **Objetivo**: Validar a rejeição de senhas que não atendem aos critérios.
+- **Entradas**: Senha sem caractere especial ou número.
+- **Resultado Esperado**: Mensagem de erro informando os critérios não atendidos.
+
+### CT03 – Login com credenciais corretas
+
+- **Objetivo**: Verificar se o login funciona com dados válidos.
+- **Entradas**: Email ou telefone + senha correta.
+- **Resultado Esperado**: Acesso ao sistema e redirecionamento para tela apropriada (Admin ou Consult).
+
+### CT04 – Login com credenciais incorretas
+
+- **Objetivo**: Validar o tratamento de erro no login.
+- **Entradas**: Email/telefone inexistente ou senha incorreta.
+- **Resultado Esperado**: Mensagem de erro “Usuário ou senha incorretos”.
+
+### CT05 – Criação de agendamento
+
+- **Objetivo**: Verificar se o usuário consegue agendar um serviço.
+- **Entradas**: Serviço, Data (DD-MM-YYYY), Hora (HH:MM).
+- **Resultado Esperado**: Mensagem de sucesso e exibição do agendamento na tela ConsultFrame.
+
+### CT06 – Edição de agendamento existente
+
+- **Objetivo**: Validar a alteração de dados de um agendamento.
+- **Entradas**: Novo serviço, data e hora.
+- **Resultado Esperado**: Mensagem de sucesso e atualização visível na tela.
+
+### CT07 – Exclusão de agendamento
+
+- **Objetivo**: Verificar se o administrador consegue excluir um agendamento.
+- **Entradas**: Seleção de usuário com agendamento.
+- **Resultado Esperado**: Mensagem de sucesso e remoção do registro.
+
+### CT08 – Edição de dados do usuário
+
+- **Objetivo**: Validar a edição de dados cadastrais por parte do administrador.
+- **Entradas**: Nome, Email, Telefone, Data de Nascimento.
+- **Resultado Esperado**: Mensagem de sucesso e dados atualizados.
+
+### CT09 – Exclusão de usuário
+
+- **Objetivo**: Verificar se o administrador consegue excluir um usuário.
+- **Entradas**: Seleção de usuário.
+- **Resultado Esperado**: Mensagem de sucesso e remoção do usuário e seus agendamentos.
+
+### CT10 – Consulta de informações pessoais
+
+- **Objetivo**: Validar se o usuário visualiza corretamente seus dados e agendamento.
+- **Entradas**: Login válido.
+- **Resultado Esperado**: Exibição de nome, email, telefone, nascimento e agendamento.
+
+---
+
+## 8. Responsabilidades por Colaborador
+
+Durante o desenvolvimento do sistema de agendamento, a equipe dividiu as tarefas levando em consideração as habilidades e disponibilidade de cada integrante.
+Abaixo está a descrição das responsabilidades assumidas por cada colaborador:
+
+### **Francisco Eudes Rodrigues**
+
+Responsável pela estrutura principal da aplicação (`main.py`) e pela interface administrativa (`admin.py`). Implementou a lógica de navegação entre telas e os métodos que permitem ao administrador visualizar, editar e excluir usuários e agendamentos.
+
+### **Elayne Nascimento**
+
+Ficou encarregada da camada de dados (`data.py`) e da tela de edição de usuários (`edit_user.py`). Implementou as funções de acesso ao banco SQLite, como criação de usuários, agendamentos e autenticação, além da lógica de atualização dos dados cadastrais.
+
+### **Gilssilany Valentino**
+
+Desenvolveu o script de criação do usuário administrador (`creat_admin.py`) e a tela de cadastro de novos usuários (`register.py`). Foi responsável por validar os dados de entrada e garantir que o processo de registro estivesse integrado ao banco de dados.
+
+### **Igor Marcelo Freire**
+
+Trabalhou na tela de consulta de informações (`consult.py`) e na edição de agendamentos (`edit_appt.py`). Implementou a exibição dos dados do usuário e a lógica que permite alterar data, hora e tipo de serviço agendado.
+
+### **Aluísio Rodrigues**
+
+Ficou responsável pelos módulos auxiliares (`helpers.py`) e de segurança (`securit.py`). Implementou funções de apoio e a criptografia de senhas, garantindo que os dados sensíveis fossem armazenados de forma segura.
+
+### **Marcus Vinícius Monteiro**
+
+Desenvolveu a tela de criação de agendamentos (`creat_appt.py`) e a tela de login (`login.py`). Implementou a lógica de autenticação e a interface que permite ao usuário agendar serviços com data e hora específicas.
+
+**Com essa divisão, a equipe inteira participou da implementação do código.**
+
+--- 
+
+
+
 
