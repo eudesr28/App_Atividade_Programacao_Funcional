@@ -408,7 +408,7 @@ def with_db(func):
         return wrapper
 ```
 
-- Arquivo: database/data.py (ou database/__init__.py, dependendo da sua versão).
+- Arquivo: database/data.py
 
 - with_db recebe uma função (func) como parâmetro → alta ordem.
 
