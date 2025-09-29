@@ -416,7 +416,7 @@ def with_db(func):
 
 ---
 
-## 7. Casos de Teste
+## 7. Casos de Testes
 
 ### CT01 – Cadastro de Usuário com dados válidos
 
