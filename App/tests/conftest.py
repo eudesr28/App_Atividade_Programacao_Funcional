@@ -21,7 +21,6 @@ def setup_test_db():
     Cria o banco de teste e inicializa as tabelas antes de cada teste.
     Remove o banco ao final do teste.
     """
-    # Redefine DB_NAME no módulo database.data
     import database.data as data_module
     data_module.DB_NAME = TEST_DB
 
@@ -31,9 +30,8 @@ def setup_test_db():
 
     init_db()
 
-    yield  # Teste roda aqui
+    yield  
 
-    # Limpa banco após o teste
     if os.path.exists(TEST_DB):
         os.remove(TEST_DB)
 
